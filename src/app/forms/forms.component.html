@@ -1,0 +1,44 @@
+
+<div >
+
+    <form [formGroup]="dataForm" (ngSubmit)="submitFormData(dataForm.value)">
+  
+      <div class="form-container">
+  
+        <div class="row columns">
+          
+          <h1>Beginners Simple Reactive Form</h1>
+  
+          
+          <label>First Name *
+            <input type="text" placeholder="Enter Name" formControlName="firstname">
+          </label>
+  
+          <div class="alert error" *ngIf="!dataForm.controls['firstname'].valid && dataForm.controls['firstname'].touched">{{ fnameError }}</div>
+  
+          <label> Last name *
+            <input type="text" placeholder="Enter Name" formControlName="lastname">
+          </label>
+  
+          <div class="alert error" *ngIf="!dataForm.controls['lastname'].valid && dataForm.controls['lastname'].touched">{{ lnameError }}</div>
+  
+          <input type="submit" class="button expanded" value="Submit Form" [disabled]="!dataForm.valid">
+  
+        </div>
+  
+      </div>
+  
+    </form>
+  
+  </div>
+  
+<div class="form-container">
+  <table class=" row columns" id="data">
+    <tr>
+      <td>S. No</td><td>First Name</td><td>Last Name</td>
+    </tr>
+    <tr *ngFor="let data of tableData; let i = index">
+      <td>{{i+1}}</td><td>{{data.firstName}}</td><td>{{data.lastName}}</td>
+    </tr>
+  </table>
+</div>
